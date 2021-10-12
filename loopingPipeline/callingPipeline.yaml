@@ -11,10 +11,15 @@ jobs:
   - name: resourcegroupname # name of the parameter; required
     value: "opsadmin"
 
-  - name: password
-    value: "nope"
-
   steps:
+  - script: |
+      set +e
+      if [ -z $(environment) ]; then
+      echo "target environment not specified";
+      exit 1;
+      fi
+      echo "environment is:" $(password)
+
   - template : deployUpdate.yaml
     parameters:
       firms: ["dev-test-2", "dev-test-2"]
