@@ -1,5 +1,11 @@
 # The use of this pipeline to create the sql databases for the multiple firms in an existing SQL Server  and SQL Server Elastic pool. 
-
+name: $(date:yyyyMMdd)$(rev:.r)
+jobs:
+- job: Maintain_DB_Schemas
+  displayName: Maintainn DB Schemeas
+  cancelTimeoutInMinutes: 5
+  pool:
+    vmImage: vs2017-win2016
 
 variables:
 - name: sqlservername # name of the parameter; required
