@@ -10,10 +10,7 @@ jobs:
   variables:
   - name: resourcegroupname # name of the parameter; required
     value: "opsadmin"
-
-  - name: password
-    value: "nope"
-
+    
   steps:
   - template : deployUpdate.yaml
     parameters:
