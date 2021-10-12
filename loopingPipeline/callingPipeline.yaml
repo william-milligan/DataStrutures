@@ -1,28 +1,20 @@
 # The use of this pipeline to create the sql databases for the multiple firms in an existing SQL Server  and SQL Server Elastic pool. 
 
 
-name: $(Date:yyyyMMdd)$(Rev:.r)pool:
-  vmImage: 'ubuntu-latest'
-
-
 variables:
-- name:  azureSubscription
-  value: "nope"
-
 - name: sqlservername # name of the parameter; required
   value: damosqlserver # provide the name of the sqlserver
 
 - name: resourcegroupname # name of the parameter; required
   value: "opsadmin"
 
--name: password
+- name: password
   value: "nope"
 
 steps:
-- template : createSQLDB-template.yml
+- template : deployUpdate.yaml
   parameters:
     sqlservername: ${{ variables.sqlservername }}
-    firms: ["dev-test-2"]
-    resourcegroupname: ${{ opsadmin }},
-    AzureSubscription: ${{ variables.azureSubscription }}
+    firms: ["dev-test-2", "dev-test-2"]
+    resourcegroupname: "opsadmin"
     password: ${{ variables.password }}

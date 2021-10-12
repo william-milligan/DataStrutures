@@ -1,21 +1,19 @@
-# File Name : createSQLDB-template.yml
-
+# The use of this pipeline to create the sql databases for the multiple firms in an existing SQL Server  and SQL Server Elastic pool. 
 parameters:
   sqlservername: ''
   sqlelasticpoolname: ''
   password: ''
   firms : [] #defining array here to expect multiple values. 
   resourcegroupname: ''
-  AzureSubscription: '<Azure service connection>'
 
 
 steps:
 - ${{ each firm in parameters.firms }}:
 - task: SqlAzureDacpacDeployment@1
-  displayName: Execute Azure SQL : DacpacTask
+  displayName: Execute Azure SQL
   inputs:
-    azureSubscription: '<Azure service connection>'
-    ServerName: '<Database server name>'
+    AuthenticationType: 'server'
+    ServerName: 'opsadmin.database.windows.net'
     DatabaseName: ${{ firm }} 
     SqlUsername: 'opsadmin'
     SqlPassword: ${{ parameters.password }}
