@@ -1,0 +1,22 @@
+# File Name : createSQLDB-template.yml
+
+parameters:
+  sqlservername: ''
+  sqlelasticpoolname: ''
+  password: ''
+  firms : [] #defining array here to expect multiple values. 
+  resourcegroupname: ''
+  AzureSubscription: '<Azure service connection>'
+
+
+steps:
+- ${{ each firm in parameters.firms }}:
+- task: SqlAzureDacpacDeployment@1
+  displayName: Execute Azure SQL : DacpacTask
+  inputs:
+    azureSubscription: '<Azure service connection>'
+    ServerName: '<Database server name>'
+    DatabaseName: ${{ firm }} 
+    SqlUsername: 'opsadmin'
+    SqlPassword: ${{ parameters.password }}
+    DacpacFile: './CommandCenter.dacpac'
