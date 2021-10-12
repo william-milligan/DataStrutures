@@ -14,7 +14,5 @@ variables:
 steps:
 - template : deployUpdate.yaml
   parameters:
-    sqlservername: ${{ variables.sqlservername }}
     firms: ["dev-test-2", "dev-test-2"]
-    resourcegroupname: "opsadmin"
     password: ${{ variables.password }}

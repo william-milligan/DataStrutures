@@ -1,11 +1,7 @@
 # The use of this pipeline to create the sql databases for the multiple firms in an existing SQL Server  and SQL Server Elastic pool. 
 parameters:
-  sqlservername: ''
-  sqlelasticpoolname: ''
   password: ''
-  firms : [] #defining array here to expect multiple values. 
-  resourcegroupname: ''
-
+  firms : []
 
 steps:
 - ${{ each firm in parameters.firms }}:
@@ -14,7 +10,7 @@ steps:
   inputs:
     AuthenticationType: 'server'
     ServerName: 'opsadmin.database.windows.net'
-    DatabaseName: ${{ firm }} 
+    DatabaseName: ${{ firm }}
     SqlUsername: 'opsadmin'
     SqlPassword: ${{ parameters.password }}
     DacpacFile: './CommandCenter.dacpac'
