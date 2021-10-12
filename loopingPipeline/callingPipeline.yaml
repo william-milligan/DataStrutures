@@ -10,7 +10,7 @@ jobs:
   variables:
   - name: resourcegroupname # name of the parameter; required
     value: "opsadmin"
-
+    
   steps:
   - script: |
       set +e
@@ -23,4 +23,4 @@ jobs:
   - template : deployUpdate.yaml
     parameters:
       firms: ["dev-test-2", "dev-test-2"]
-      password: ${{ variables.password }}
+      password: $(password)
