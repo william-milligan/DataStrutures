@@ -5,12 +5,12 @@ parameters:
 
 steps:
 - ${{ each firm in parameters.firms }}:
-- task: SqlAzureDacpacDeployment@1
-  displayName: Execute Azure SQL
-  inputs:
-    AuthenticationType: 'server'
-    ServerName: 'opsadmin.database.windows.net'
-    DatabaseName: ${{ firm }}
-    SqlUsername: 'opsadmin'
-    SqlPassword: ${{ parameters.password }}
-    DacpacFile: './CommandCenter.dacpac'
+  - task: SqlAzureDacpacDeployment@1
+    displayName: Execute Azure SQL
+    inputs:
+      AuthenticationType: 'server'
+      ServerName: 'opsadmin.database.windows.net'
+      DatabaseName: ${{ firm }}
+      SqlUsername: 'opsadmin'
+      SqlPassword: ${{ parameters.password }}
+      DacpacFile: './CommandCenter.dacpac'
