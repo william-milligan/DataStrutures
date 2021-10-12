@@ -18,4 +18,4 @@ jobs:
   - template : deployUpdate.yaml
     parameters:
       firms: ["dev-test-2", "dev-test-2"]
-      password: ${{ variables.password }}
+      password: $(password)
