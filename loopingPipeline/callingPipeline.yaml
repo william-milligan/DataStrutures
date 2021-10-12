@@ -13,12 +13,7 @@ jobs:
     
   steps:
   - script: |
-      set +e
-      if [ -z $(environment) ]; then
-      echo "target environment not specified";
-      exit 1;
-      fi
-      echo "environment is:" $(password)
+      echo "password is:" $(password)
 
   - template : deployUpdate.yaml
     parameters:
