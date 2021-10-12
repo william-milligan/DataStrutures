@@ -8,9 +8,6 @@ jobs:
     vmImage: vs2017-win2016
 
   variables:
-  - name: sqlservername # name of the parameter; required
-    value: damosqlserver # provide the name of the sqlserver
-
   - name: resourcegroupname # name of the parameter; required
     value: "opsadmin"
 
