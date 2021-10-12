@@ -9,16 +9,16 @@ variables:
   value: damosqlserver # provide the name of the sqlserver
 
 - name: resourcegroupname # name of the parameter; required
-  value:"opsadmin"
+  value: "opsadmin"
 
--name: password
-  value:"nope"
+- name: password
+  value: "nope"
 
 steps:
-- template : createSQLDB-template.yml
+- template : deployUpdate.yaml
   parameters:
     sqlservername: ${{ variables.sqlservername }}
     firms: ["dev-test-2", "dev-test-2"]
-    resourcegroupname: ${{ opsadmin }},
+    resourcegroupname: "opsadmin"
     AzureSubscription: ${{ variables.azureSubscription }}
     password: ${{ variables.password }}
