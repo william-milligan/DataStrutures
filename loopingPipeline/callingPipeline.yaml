@@ -7,18 +7,18 @@ jobs:
   pool:
     vmImage: vs2017-win2016
 
-variables:
-- name: sqlservername # name of the parameter; required
-  value: damosqlserver # provide the name of the sqlserver
+  variables:
+  - name: sqlservername # name of the parameter; required
+    value: damosqlserver # provide the name of the sqlserver
 
-- name: resourcegroupname # name of the parameter; required
-  value: "opsadmin"
+  - name: resourcegroupname # name of the parameter; required
+    value: "opsadmin"
 
-- name: password
-  value: "nope"
+  - name: password
+    value: "nope"
 
-steps:
-- template : deployUpdate.yaml
-  parameters:
-    firms: ["dev-test-2", "dev-test-2"]
-    password: ${{ variables.password }}
+  steps:
+  - template : deployUpdate.yaml
+    parameters:
+      firms: ["dev-test-2", "dev-test-2"]
+      password: ${{ variables.password }}
